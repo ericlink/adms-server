@@ -1,0 +1,1772 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+"http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<!--
+Confidential Information.
+Copyright (C) 2003, 2004, 2005, 2006, 2010, 2011 Eric Link, All rights reserved.
+PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+-->
+
+<jasperReport name="DayOverDayReport" pageWidth="792" pageHeight="612" printOrder="Vertical" orientation="Landscape" scriptletClass="core.report.dayoverday.Scriptlet">
+   <reportFont name="Arial_Normal" isDefault="true" fontName="Arial" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+   <reportFont name="Arial_Bold" isDefault="false" fontName="Arial" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+   <reportFont name="Arial_Italic" isDefault="false" fontName="Arial" size="10" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Oblique" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+   <reportFont name="DateLabel" isDefault="false" fontName="Arial" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+   <reportFont name="HighValue" isDefault="false" fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+   <reportFont name="LowValue" isDefault="false" fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+   <reportFont name="InRangeValue" isDefault="false" fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+   <reportFont name="MultipleValue" isDefault="false" fontName="Arial" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false" />
+
+   <field name="reportDate" class="java.lang.String" />
+   <field name="handle" class="java.lang.String" />
+   <field name="timeStamp" class="java.lang.String" />
+   <field name="rangeIndicator0" class="java.lang.String" />
+   <field name="rangeIndicator1" class="java.lang.String" />
+   <field name="rangeIndicator2" class="java.lang.String" />
+   <field name="rangeIndicator3" class="java.lang.String" />
+   <field name="rangeIndicator4" class="java.lang.String" />
+   <field name="rangeIndicator5" class="java.lang.String" />
+   <field name="rangeIndicator6" class="java.lang.String" />
+   <field name="rangeIndicator7" class="java.lang.String" />
+   <field name="rangeIndicator8" class="java.lang.String" />
+   <field name="rangeIndicator9" class="java.lang.String" />
+   <field name="rangeIndicator10" class="java.lang.String" />
+   <field name="rangeIndicator11" class="java.lang.String" />
+   <field name="rangeIndicator12" class="java.lang.String" />
+   <field name="rangeIndicator13" class="java.lang.String" />
+   <field name="rangeIndicator14" class="java.lang.String" />
+   <field name="rangeIndicator15" class="java.lang.String" />
+   <field name="rangeIndicator16" class="java.lang.String" />
+   <field name="rangeIndicator17" class="java.lang.String" />
+   <field name="rangeIndicator18" class="java.lang.String" />
+   <field name="rangeIndicator19" class="java.lang.String" />
+   <field name="rangeIndicator20" class="java.lang.String" />
+   <field name="rangeIndicator21" class="java.lang.String" />
+   <field name="rangeIndicator22" class="java.lang.String" />
+   <field name="rangeIndicator23" class="java.lang.String" />
+   <field name="bg0" class="java.lang.String" />
+   <field name="bg1" class="java.lang.String" />
+   <field name="bg2" class="java.lang.String" />
+   <field name="bg3" class="java.lang.String" />
+   <field name="bg4" class="java.lang.String" />
+   <field name="bg5" class="java.lang.String" />
+   <field name="bg6" class="java.lang.String" />
+   <field name="bg7" class="java.lang.String" />
+   <field name="bg8" class="java.lang.String" />
+   <field name="bg9" class="java.lang.String" />
+   <field name="bg10" class="java.lang.String" />
+   <field name="bg11" class="java.lang.String" />
+   <field name="bg12" class="java.lang.String" />
+   <field name="bg13" class="java.lang.String" />
+   <field name="bg14" class="java.lang.String" />
+   <field name="bg15" class="java.lang.String" />
+   <field name="bg16" class="java.lang.String" />
+   <field name="bg17" class="java.lang.String" />
+   <field name="bg18" class="java.lang.String" />
+   <field name="bg19" class="java.lang.String" />
+   <field name="bg20" class="java.lang.String" />
+   <field name="bg21" class="java.lang.String" />
+   <field name="bg22" class="java.lang.String" />
+   <field name="bg23" class="java.lang.String" />
+   <title />
+   <pageHeader>
+      <band height="41">
+        <staticText>
+            <reportElement mode="Opaque" x="0" y="0" width="756" height="21" backcolor="#e6e6e6" />
+            <box border="1Point" leftPadding="5" />
+            <textElement isStyledText="true" verticalAlignment="Middle">
+               <font reportFont="Arial_Bold" size="12" />
+            </textElement>
+            <text><![CDATA[<style isBold="true">easySHARE Day Over Day Blood Glucose Log Report (21 Day)</style>]]></text>
+         </staticText>
+		 <staticText>
+		    <reportElement x="0" y="0" width="756" height="21"/>
+		    <box border="1Point" rightPadding="5"/>
+		    <textElement isStyledText="true" verticalAlignment="Middle" textAlignment="Right">
+		       <font reportFont="Arial_Italic" size="8" />
+		    </textElement>
+		    <text>Copyright easySHARE 2005-2012.  All Rights Reserved Worldwide.</text>
+		 </staticText>
+         <staticText>
+            <reportElement mode="Opaque" x="0" y="20" width="85" height="21" backcolor="#e6e6e6" />
+            <box border="1Point" rightPadding="4" />
+            <textElement verticalAlignment="Middle" textAlignment="Right">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>Patient Handle:</text>
+         </staticText>
+         <textField isBlankWhenNull="true">
+            <reportElement x="84" y="20" width="400" height="21" />
+            <box border="1Point" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Normal" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{handle}]]>
+</textFieldExpression>
+         </textField>
+         <staticText>
+            <reportElement mode="Opaque" x="476" y="20" width="86" height="21" backcolor="#e6e6e6" />
+            <box border="1Point" rightPadding="4" />
+            <textElement verticalAlignment="Middle" textAlignment="Right">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>Report Date:</text>
+         </staticText>
+         <textField isBlankWhenNull="true">
+            <reportElement mode="Opaque" x="560" y="20" width="196" height="21" />
+            <box border="1Point" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Normal" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{reportDate}]]>
+</textFieldExpression>
+         </textField>
+      </band>
+   </pageHeader>
+   <columnHeader>
+      <band height="15">
+         <staticText>
+            <reportElement mode="Opaque" x="0" y="0" width="85" height="15" />
+            <box leftBorder="1Point" bottomBorder="1Point" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>Time Stamp</text>
+         </staticText>
+         <staticText>
+            <reportElement x="84" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>12M</text>
+         </staticText>
+         <staticText>
+            <reportElement x="112" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>1 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="140" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>2 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="168" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>3 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="196" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>4 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="224" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>5 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="252" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>6 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="280" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>7 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="308" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>8 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="336" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>9 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="364" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>10 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="392" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>11 A</text>
+         </staticText>
+         <staticText>
+            <reportElement x="420" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>12 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="448" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>1 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="476" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>2 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="504" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>3 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="532" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>4 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="560" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>5 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="588" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>6 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="616" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>7 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="644" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>8 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="672" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>9 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="700" y="0" width="28" height="15" />
+            <box leftBorder="Thin" bottomBorder="Thin" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>10 P</text>
+         </staticText>
+         <staticText>
+            <reportElement x="728" y="0" width="28" height="15" />
+            <box leftBorder="1Point" bottomBorder="1Point" rightBorder="1Point" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="Arial_Bold" />
+            </textElement>
+            <text>11 P</text>
+         </staticText>
+      </band>
+   </columnHeader>
+   <detail>
+      <band height="22">
+         <textField isStretchWithOverflow="true">
+            <reportElement x="0" y="0" width="85" height="22" />
+            <box leftBorder="1Point" bottomBorder="Thin" leftPadding="0" rightPadding="4" />
+            <textElement verticalAlignment="Middle" textAlignment="Right">
+               <font reportFont="DateLabel" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{timeStamp}]]>
+</textFieldExpression>
+         </textField>
+         <!-- one version of cell for each color required.  isHigh, isLow, isNormal, isMultiValue -->
+         <!-- print rectangles for color based on expression?-->
+         <!-- pdefine color entities for color values?-->
+         <!-- HOUR ZERO -->
+         <textField>
+            <reportElement mode="Opaque" x="84" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator0})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg0}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="84" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator0})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg0}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="84" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg0})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg0}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="84" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator0})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg0}]]>
+</textFieldExpression>
+         </textField>
+         <!-- HOUR ONE -->
+         <textField>
+            <reportElement mode="Opaque" x="112" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator1})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg1}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="112" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator1})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg1}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="112" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg1})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg1}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="112" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator1})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg1}]]>
+</textFieldExpression>
+         </textField>
+         <!-- HOUR TWO -->
+         <textField>
+            <reportElement mode="Opaque" x="140" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator2})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg2}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="140" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator2})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg2}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="140" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg2})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg2}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="140" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator2})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg2}]]>
+</textFieldExpression>
+         </textField>
+         <!-- HOUR THREE -->
+         <textField>
+            <reportElement mode="Opaque" x="168" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator3})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg3}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="168" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator3})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg3}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="168" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg3})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg3}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="168" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator3})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg3}]]>
+</textFieldExpression>
+         </textField>
+         <!-- HOUR FOUR ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="196" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator4})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg4}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="196" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator4})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg4}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="196" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg4})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg4}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="196" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator4})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg4}]]>
+</textFieldExpression>
+         </textField>
+         <!-- HOUR FIVE ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="224" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator5})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg5}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="224" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator5})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg5}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="224" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg5})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg5}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="224" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator5})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg5}]]>
+</textFieldExpression>
+         </textField>
+         <!-- HOUR SIX ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="252" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator6})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg6}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="252" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator6})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg6}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="252" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg6})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg6}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="252" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator6})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg6}]]>
+</textFieldExpression>
+         </textField>
+         <!-- HOUR SEVEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="280" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator7})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg7}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="280" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator7})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg7}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="280" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg7})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg7}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="280" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator7})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg7}]]>
+</textFieldExpression>
+         </textField> 
+         
+              
+         <!-- HOUR EIGHT ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="308" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator8})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg8}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="308" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator8})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg8}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="308" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg8})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg8}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="308" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator8})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg8}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR NINE ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="336" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator9})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg9}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="336" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator9})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg9}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="336" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg9})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg9}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="336" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator9})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg9}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR TEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="364" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator10})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg10}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="364" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator10})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg10}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="364" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg10})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg10}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="364" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator10})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg10}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR ELEVEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="392" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator11})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg11}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="392" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator11})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg11}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="392" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg11})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg11}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="392" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator11})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg11}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR TWELVE ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="420" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator12})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg12}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="420" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator12})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg12}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="420" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg12})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg12}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="420" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator12})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg12}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR THIRTEEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="448" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator13})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg13}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="448" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator13})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg13}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="448" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg13})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg13}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="448" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator13})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg13}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR FOURTEEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="476" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator14})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg14}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="476" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator14})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg14}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="476" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg14})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg14}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="476" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator14})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg14}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR FIFTEEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="504" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator15})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg15}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="504" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator15})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg15}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="504" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg15})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg15}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="504" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator15})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg15}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR SIXTEEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="532" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator16})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg16}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="532" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator16})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg16}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="532" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg16})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg16}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="532" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator16})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg16}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR SEVENTEEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="560" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator17})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg17}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="560" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator17})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg17}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="560" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg17})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg17}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="560" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator17})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg17}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR EIGHTEEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="588" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator18})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg18}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="588" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator18})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg18}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="588" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg18})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg18}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="588" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator18})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg18}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR NINETEEN ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="616" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator19})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg19}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="616" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator19})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg19}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="616" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg19})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg19}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="616" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator19})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg19}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR TWENTY ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="644" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator20})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg20}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="644" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator20})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg20}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="644" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg20})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg20}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="644" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator20})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg20}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR TWENTYONE ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="672" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator21})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg21}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="672" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator21})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg21}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="672" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg21})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg21}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="672" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator21})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg21}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR TWENTYTWO ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="700" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator22})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg22}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="700" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator22})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg22}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="700" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg22})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg22}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="700" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator22})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg22}]]>
+</textFieldExpression>
+         </textField>   
+         
+         <!-- HOUR TWENTYTHREE ****************************************** -->
+         <textField>
+            <reportElement mode="Opaque" x="728" y="0" width="28" height="22" backcolor="#ff00ff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isHigh($F{rangeIndicator23})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" rightBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="HighValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg23}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="728" y="0" width="28" height="22" backcolor="#ffff00">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isLow( $F{rangeIndicator23})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" rightBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="LowValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg23}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="728" y="0" width="28" height="22" backcolor="#00ffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isMultiple($F{bg23})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" rightBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="MultipleValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg23}]]>
+</textFieldExpression>
+         </textField>
+         <textField>
+            <reportElement mode="Opaque" x="728" y="0" width="28" height="22" backcolor="#ffffff">
+               <printWhenExpression>
+                  <![CDATA[$P{REPORT_SCRIPTLET}.isInRange( $F{rangeIndicator23})]]>
+</printWhenExpression>
+            </reportElement>
+            <box leftBorder="Thin" bottomBorder="Thin" rightBorder="Thin" leftPadding="0" rightPadding="0" />
+            <textElement verticalAlignment="Middle" textAlignment="Center">
+               <font reportFont="InRangeValue" />
+            </textElement>
+            <textFieldExpression class="java.lang.String">
+               <![CDATA[$F{bg23}]]>
+</textFieldExpression>
+         </textField>   
+                  </band>
+   </detail>
+	<pageFooter>
+		<band height="30">
+		 <staticText>
+		    <reportElement mode="Opaque" x="0" y="0" width="756" height="14"/>
+		    <box bottomBorder="1Point"/>
+		    <textElement isStyledText="true" verticalAlignment="Top" textAlignment="Left">
+		       <font reportFont="Arial_Bold"/>
+		    </textElement>
+		    <text>Plan:</text>
+		 </staticText>
+		 <staticText>
+		    <reportElement mode="Opaque" x="0" y="16" width="192" height="14"/>
+		    <box bottomBorder="1Point"/>
+		    <textElement isStyledText="true" verticalAlignment="Top" textAlignment="Left">
+		       <font reportFont="Arial_Bold"/>
+		    </textElement>
+		    <text>Plan Date/Time:</text>
+		 </staticText>
+		 <staticText>
+		    <reportElement mode="Opaque" x="200" y="16" width="270" height="14"/>
+		    <box bottomBorder="1Point"/>
+		    <textElement isStyledText="true" verticalAlignment="Top" textAlignment="Left">
+		       <font reportFont="Arial_Bold"/>
+		    </textElement>
+		    <text>Nursing Staff Signature:</text>
+		 </staticText>
+		 <staticText>
+		    <reportElement mode="Opaque" x="478" y="16" width="278" height="14"/>
+		    <box bottomBorder="1Point"/>
+		    <textElement isStyledText="true" verticalAlignment="Top" textAlignment="Left">
+		       <font reportFont="Arial_Bold"/>
+		    </textElement>
+		    <text>Physician Signature:</text>
+		 </staticText>
+		</band>
+	</pageFooter>
+   <lastPageFooter />
+</jasperReport>

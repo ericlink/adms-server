@@ -1,0 +1,23 @@
+insert into intensiveManagementProtocol_user
+select * from (
+    select 1, id from user 
+    where id not in (
+        SELECT id FROM `user` u where handle like 'TCH%' 
+        UNION
+        SELECT id FROM `user` u where handle like 'ADM%'
+    ) and isActive = 1
+) as x;
+
+insert into intensiveManagementProtocol_user
+select * from (
+    select 2, id from user where handle like 'TCH%' and isActive = 1
+) as x;
+
+insert into intensiveManagementProtocol_user
+select * from (
+    select 3, id from user where handle like 'ADM%' and isActive = 1
+) as x;
+    
+select count(*) from intensiveManagementProtocol_user;
+select count(*) from user;
+select count(*) from intensiveManagementProtocol;

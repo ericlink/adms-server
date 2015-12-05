@@ -1,0 +1,141 @@
+provisioning stored procedures and templates
+call createUserProcedure('USERLOGIN', 'USERHANDLE', 'USERTZ' );
+call createModuleProcedure( 'PIN' );
+call deactivateUserProcedure('USERLOGIN');
+call deactivateModuleProcedure('PIN');
+call updateUserProcedure('USERLOGIN','USERHANDLE',1,'USERTZ','PIN');
+call createDestinationProcedure('USERLOGIN', 'USERDEST');
+call addFeatureToLoginProcedure ( 'USERLOGIN', 'USERFEATURE', -1, null, null, 'USERDEST' );
+bash templating
+	for HANDLE in `cat logins` do; cat userhandle_template |sed  s/USERHANDLE/$HANDLE/|mysql -u root -p diabetech ; done
+call deactivateFeatureForUserDestinationProcedure('USERLOGIN', 'USERDEST');
+	-- deactivate a specific feature for a user+dest combo
+
+
+call deactivateUserFeatureProfileDestinatinProfileProcedure( 'USERLOGIN', 'USERFEATURE', null, 'DEST');
+call showDestinationProcedure ('DEST');
+call showDbInfoProcedure;
+call showStatusProcedure;
+call showLoginProcedure('LOGIN');
+
+
+-- turn off feature for someone
+select FeatureProfile, DestinationAddress, coalesce(UserFeatureProfileSchedule,FeatureProfileSchedule) as Time, coalesce( UserRiskAlertProfile, UserAppointmentReminderProfile, UserMedicalDeviceRegistrationProfile, UserRealTimeAlertProfile, UserParticipationRequestProfile, UserFrequencyAssessmentProfile, UserDayOverDayProfile) as userFeatureProfileId, UserFeatureDestinationProfileId from profileView where login = 'USERLOGIN';
+update userFeatureProfile set isActive=0,updated=now(),updatedBy='elink' where isActive=1 and id in ();
+update userFeatureProfileDestinationProfile set isActive=0,updated=now(),updatedBy='elink' where isActive=1 and id in ();
+
+
+
+ 
+
+
+
+
+
+
+
+
+-- jms / dlq
+select * from JMS_MESSAGES;select messageid,destination,txid,txop from JMS_MESSAGES;
+delete from JMS_MESSAGES where id in ();
+
+-- control readings:
+select distinct u.handle, dp.timestamp,dp.value,dp.created
+from dataPoint dp 
+join user u on u.id = dp.userId
+where dp.isControl = 1 and u.isactive = 1
+order by u.handle,dp.timestamp desc;
+
+select 'No messages at all from these (mailto?)',now();
+select u.handle,m.pin from admModulesView m join user u on u.id = m.moduleDefaultUserId  where lastMessageReceivedFromModule is null order by handle;
+
+select 'On the air?', now();
+select u.handle,m.pin,m.lastMessageReceivedFromModule from admModulesView m join user u on u.id = m.moduleDefaultUserId  order by lastMessageReceivedFromModule asc;
+
+select 'Data point counts', now();
+select u.handle,  min(dp.timestamp), max(dp.timestamp),  min(dp.created), max(dp.created), count(*) as dataPointCount from dataPoint dp  join user u on u.id = dp.userId where dp.userid in (select moduleDefaultUserId from admModulesView)  and dp.timestamp < now() group by dp.userId having dataPointCount >= 0 order by max(dp.timestamp) desc;
+
+select now(),u.handle,  min(dp.timestamp), max(dp.timestamp),  min(dp.created), max(dp.created), 
+count(*) as dataPointCount from dataPoint dp  join user u on u.id = dp.userId 
+where dp.userid in (select moduleDefaultUserId from admModulesView)  
+and dp.timestamp < now() group by dp.userId having dataPointCount >= 0 
+order by max(dp.timestamp) desc;
+
+select 'Most recent module communication and data point timestamp (by datapoint timestamp)', now();
+select u.handle,max(dp.timeStamp),max(m.lastMessageReceivedFromModule) from user u 
+left outer join dataPoint dp on dp.userId = u.id
+left outer join module m on m.userId = u.id
+where u.id IN (select moduleDefaultUserId from admModulesView)
+group by u.handle
+order by max(dp.timeStamp), u.handle;
+
+select 'Most recent module communication and data point timestamp (by handle)', now();
+select u.handle,max(dp.timeStamp),max(m.lastMessageReceivedFromModule) from user u 
+left outer join dataPoint dp on dp.userId = u.id
+left outer join module m on m.userId = u.id
+where u.id IN (select moduleDefaultUserId from admModulesView)
+group by u.handle
+order by u.handle;
+
+select u.id from user u where u.id IN (select moduleDefaultUserId from admModulesView);
+
+select u.handle, min(dp.timestamp), max(dp.timestamp),  min(dp.created), max(dp.created), count(*) as dataPointCount from dataPoint dp  join user u on u.id = dp.userId where dp.userid in (select moduleDefaultUserId from admModulesView)  and dp.timestamp < now() group by dp.userId having dataPointCount > 0 order by max(dp.timestamp) desc;
+
+-- enrollment by handle
+select userId,imp,featureprofile,handle,destinationaddress from profileView where handle = 'ADM083';
+
+select imp.name,fp.name from intensiveManagementProtocol imp join featureProfile fp on fp.intensiveManagementProtocolId = imp.id order by imp.name,fp.name;
+
+select u.timezone,u.handle, ufp.lastPerformedOn, ufp.lastCheckToPerformOn  from userFeatureProfile ufp join user u on u.id = ufp.userId order by ufp.lastPerformedOn desc
+
+select count(*) as pc,pin from module where isactive = 1 and networkcode = 5 group by pin having pc > 0
+
+select * from admModulesView  order by lastMessageReceivedFromModule
+
+select * from userFeatureProfile ufp join featureProfile fp on fp.id = ufp.featureProfileId where userId = 137;
+
+select u.handle, 
+min(dp.timestamp), max(dp.timestamp), 
+min(dp.created), max(dp.created), 
+count(*) as dataPointCount, min(dp.value), max(dp.value), avg(dp.value),stddev_pop(dp.value),var_pop(dp.value)
+from dataPoint dp 
+join user u on u.id = dp.userId
+where dp.userid in (select moduleDefaultUserId from admModulesView) 
+and dp.timestamp < now()
+group by dp.userId
+having dataPointCount > 0
+order by max(dp.timestamp) desc
+
+
+-- only have medical devices from ship date forward
+select now();select * from medicalDevice where userId in (select moduleDefaultUserId from admModulesView) order by created;
+
+-- all are unknown, that is correct
+select distinct u.handle from user u where id in (select moduleDefaultUserId from admModulesView) order by created
+
+select count(*) as dpc, dp.min(dp.created), dp.max(dp.created) dp.userId
+from dataPoint dp 
+where dp.userid in (select moduleDefaultUserId from admModulesView) 
+group by dp.userId
+having dpc > 0
+order by dpc desc
+
+select *
+from module m
+join user u on u.id = m.userid
+where m.isactive = 1 
+and m.networkcode = 5  
+and u.handle = 'Unknown'
+and lastMessageReceivedFromModule is not null
+order by lastMessageReceivedFromModule
+
+select min(dp.created) from dataPoint dp
+where dp.userId in (
+select userId
+from module m
+join user u on u.id = m.userid
+where m.isactive = 1 
+and m.networkcode = 5  
+and u.handle = 'Unknown'
+and lastMessageReceivedFromModule is not null
+)

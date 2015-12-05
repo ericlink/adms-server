@@ -1,0 +1,18 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Application.index
+GET     /ping                                   Application.ping
+GET     /ping/                                  Application.ping
+POST    /data                                   Application.data
+POST    /data/                                  Application.data
+POST    /otap/notify                            Application.data
+POST    /otap/notify/                           Application.data
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

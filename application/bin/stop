@@ -1,0 +1,6 @@
+#!/bin/bash
+JAVA_HOME=~/glucodynamix/jdk
+export JAVA_HOME
+echo $JAVA_HOME
+cd play
+./play stop linktoapp &

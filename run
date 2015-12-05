@@ -1,0 +1,5 @@
+#!/bin/bash
+cd ./play
+#./play run linktoapp -Djava.util.logging.manager=org.apache.logging.julbridge.JULBridgeLogManager
+./play  run linktoapp 
+

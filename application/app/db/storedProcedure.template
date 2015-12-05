@@ -1,0 +1,36 @@
+%PROCEDURE_NAME%
+
+
+delimiter //
+DROP PROCEDURE IF EXISTS %PROCEDURE_NAME%;
+// 
+CREATE PROCEDURE %PROCEDURE_NAME% (IN _p1 INT, IN _p2l varchar(255))
+MAIN:
+BEGIN
+  DECLARE _varX int;
+
+select 'Parameters:', _userId, _featureName;
+
+IF  _featureProfileId is NULL THEN
+    select 'ERROR: feature profile not found';
+    leave main;
+END IF;
+  
+SELECT id INTO destinationId FROM (select distinct id,address from destination) as x where address = _email limit 1;
+select _userId, userFeatureProfileId, destinationId, _email, _featureProfileId;
+IF  destinationId is NULL THEN
+       select 'null dest id';
+        insert into destination values (null,0,_email,1,null,null,0,now(),now(),'elink',null,_userId);
+               select 'inserted';
+        select LAST_INSERT_ID() into destinationId;
+               select destinationId ;
+END IF;
+    
+    insert into userFeatureProfileDestinationProfile values (
+null,1,null,now(),now(),'elink',userFeatureProfileId,destinationId,null,null
+);    
+END
+//
+delimiter ;
+
+

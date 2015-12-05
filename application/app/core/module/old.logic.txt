@@ -1,0 +1,201 @@
+    
+    /**
+     * net.diabetech.glucodynamix.alert
+     * promote to helper when alerts come from other places.
+     * based on user's local time
+     * User level schedule, may be expanded to destination level in the future (override at destination level?)
+     ***/
+    private void sendAlertToDestinations( User user, String subject, String body ) {
+    old scheduling, still ok for test alerts? nah keep to one model and convert data
+        Calendar nowUserTimeZone = Calendar.getInstance( user.getTimeZone() );
+        int nowUserTimeZoneDayOfWeek = nowUserTimeZone.get( nowUserTimeZone.DAY_OF_WEEK );
+        int nowUserTimeZoneHourOfDay = nowUserTimeZone.get( nowUserTimeZone.HOUR_OF_DAY );
+        
+        for( AlertSchedule schedule : user.getAlertSchedules() ) {
+            if (nowUserTimeZoneDayOfWeek == schedule.getDayOfWeek()
+            &&  nowUserTimeZoneHourOfDay >= schedule.getStartHour()
+            &&  nowUserTimeZoneHourOfDay < schedule.getEndHour() ) {
+                
+                logger.log( Level.INFO, "Sending alert [nowUserTimeZoneDayOfWeek=" + nowUserTimeZoneDayOfWeek + ",nowUserTimeZoneHourOfDay=" + nowUserTimeZoneHourOfDay + ",user=" + user.getId() + ",subject=" + subject.toString() + ",body=" + body.toString() + "]" );
+                
+                for( AlertDestination destination : user.getAlertDestinations() ) {
+                    if ( destination.isActive() ) {//&& destination.getType() == DestinationType.EMAIL_PAGER_ADDRESS ) { //  dest types
+                        logger.log( Level.INFO, "Sending to " + destination.getDestination() );
+                        // email not showing up on local box; convert to javamail class for more debug?
+                        SendMail.send( destination.getDestination(), "GlucoMON@diabetech.net", "localhost",  subject, body );
+                        logger.log( Level.INFO, "Sent" );
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    private void oldCode() { // remove after testing
+        //////  public void onMessage( Module module, GlucoMonDatabase diaFlexDatabase ) throws ModuleInboundException {
+        //////        try {
+        //////            Map<User,Reading> userAlertCandidates = new HashMap<User,Reading>();
+        //////            List<MedicalDevice> newMedicalDevicesOnAccount = new ArrayList<MedicalDevice>();
+        //////
+        //////            Iterator glucoseMeters = diaFlexDatabase.getGlucoseMeters().iterator();
+        //////            while( glucoseMeters.hasNext() ) {
+        //////                GlucoseMeter gm = (GlucoseMeter)glucoseMeters.next();
+        //////                String gmSerialNumber = gm.getSerialNumber();
+        //////
+        //////                SimpleCriteria gmLookupCriteria = new SimpleCriteria();
+        //////
+        //////                Medicaldevice medicalDevice;
+        //////                gmLookupCriteria.equal( MedicaldevicePeer.ISACTIVE, true );
+        //////                gmLookupCriteria.equal( MedicaldevicePeer.SERIALNUMBER, gmSerialNumber );
+        //////                List medicalDevices = MedicaldevicePeer.doSelect( gmLookupCriteria );
+        //////                if ( medicalDevices.size() > 0 ) {
+        //////                    medicalDevice = (Medicaldevice)medicalDevices.get( 0 );
+        //////                } else {
+        //////                    medicalDevice = new Medicaldevice();
+        //////                    medicalDevice.setUserid( module.getUserid() );
+        //////                    medicalDevice.setSerialnumber( gmSerialNumber );
+        //////                    medicalDevice.setIsactive( true );
+        //////                    medicalDevice.setCreated( DataAccessObject.now() );
+        //////                    medicalDevice.setUpdated( DataAccessObject.now() );
+        //////                    medicalDevice.setUpdatedby( "0" );
+        //////                    medicalDevice.save();
+        //////                    // fire new medical device event
+        //////                    newMedicalDevicesOnAccount.add( medicalDevice );
+        //////                }
+        //////
+        //////
+        //////                // prior to saving the data in the db,
+        //////                // save the user and first reading to send out, if it's new data
+        //////                Object[] alertReadings = gm.getReadings().toArray();
+        //////                if ( alertReadings.length > 0 ) {
+        //////                    Reading reading = (Reading)alertReadings[0];
+        //////                    // could fail if loading multiple SN for same user and the last reading we see
+        //////                    // here is not the last in time order...  only happens when we get entire diaflex db
+        //////                    // and have multiple messages sent or multiple GMs sent and data is new (first time to us)
+        //////
+        //////                    // if it's a new reading, fire the new reading event
+        //////                    SimpleCriteria dataPointLookupCriteria = new SimpleCriteria();
+        //////                    dataPointLookupCriteria.equal( DatapointPeer.MEDICALDEVICEID, medicalDevice.getId() );
+        //////                    dataPointLookupCriteria.equal( DatapointPeer.TIMESTAMP, reading.getDateTime().getTime() );
+        //////
+        //////                    if ( DatapointPeer.doSelect( dataPointLookupCriteria ).size() == 0 ) {
+        //////                        //fire new reading event
+        //////                        userAlertCandidates.put( medicalDevice.getUser(), reading );
+        //////                    }
+        //////                }
+        //////
+        //////                // store the readings in the db
+        //////                Iterator readings = gm.getReadings().iterator();
+        //////                while( readings.hasNext() ) {
+        //////                    Reading reading = (Reading)readings.next();
+        //////                    Datapoint dp = new Datapoint();
+        //////                    dp.setUserid( medicalDevice.getUserid() );
+        //////                    dp.setModuleid( module.getId() );
+        //////                    dp.setMedicaldeviceid( medicalDevice.getId() );
+        //////                    dp.setModuleoutboundmessageid( 0 ); // reading envelope
+        //////                    dp.setTimestamp( reading.getDateTime().getTime() );
+        //////                    dp.setIscontrol( reading.isControlTest() );
+        //////                    dp.setValue( (short)reading.getValue() );
+        //////                    dp.setTimecorrectionoffset( reading.getTimeCorrectionOffset() );
+        //////                    dp.setTimecorrectedtimestamp( reading.getCorrectedDateTime().getTime() );
+        //////                    dp.setOriginated( new Date() ); // reading envelope
+        //////                    dp.setIsactive( true );
+        //////                    dp.setCreated( DataAccessObject.now() );
+        //////                    dp.setUpdated( DataAccessObject.now() );
+        //////                    dp.setUpdatedby( "0" );
+        //////                    dp.save();
+        //////                }
+        //////
+        //////                //  new medical device handler
+        //////                for( Medicaldevice device : newMedicalDevicesOnAccount ) {
+        //////                    if ( Logger.global.isLoggable( Logger.global.getLevel().INFO ) ) Logger.global.info( "new device" );
+        //////                    StringBuffer subject = new StringBuffer();
+        //////                /*
+        //////                 Darby, a new Glucose Meter was used with your GlucoMON. Serial #PMP4BE5BT added Tue, Nov 18, 6:56 PM MST
+        //////                 */
+        //////                    subject.append( "GlucoMON Alert new Glucose Meter" );
+        //////                    StringBuffer body = new StringBuffer();
+        //////                    body.append( device.getUser().getHandle() );
+        //////                    body.append( ", a new Glucose Meter was used with your GlucoMON. Serial #" );
+        //////                    body.append( device.getSerialnumber() );
+        //////                    body.append( " added " );
+        //////                    dateFormatterNewDeviceAlert.setTimeZone( TimeZone.getTimeZone( device.getUser().getTimezone() ) );
+        //////                    body.append( dateFormatterNewDeviceAlert.format( device.getCreated() ) ); // this will be converted from UTC to the modules current TimeZone
+        //////                    sendAlertToDestinations( device.getUser(), subject.toString(), body.toString() );
+        //////                }
+        //////
+        //////
+        //////                // : new reading standard alert handler
+        //////                // send the last reading to the users destinations if we are in schedule and meet criteria for alert.
+        //////                for( User user : userAlertCandidates.keySet() ) {
+        //////                    Reading alertReading = (Reading)userAlertCandidates.get( user );
+        //////                    Iterator alertThresholds   = user.getAlertthresholds().iterator();
+        //////                    while( alertThresholds.hasNext() ) {
+        //////                        Alertthreshold threshold = (Alertthreshold)alertThresholds.next();
+        //////                        if ( threshold.getIsactive() && (
+        //////                                alertReading.getValue() < threshold.getLow()
+        //////                                || alertReading.getValue() > threshold.getHigh()
+        //////                                ) ) {
+        //////                            StringBuffer subject = new StringBuffer();
+        //////                            subject.append( "GlucoMON Alert for " );
+        //////                            subject.append( user.getHandle() );
+        //////                            StringBuffer body = new StringBuffer();
+        //////                            body.append( "BG=" );
+        //////                            body.append( alertReading.getFormattedValue() );
+        //////                            body.append( " taken " );
+        //////                            body.append( dateFormatterBgAlert.format( alertReading.getDateTime().getTime() ) );
+        //////                            // add callback number
+        //////                            sendAlertToDestinations( user, subject.toString(), body.toString() );
+        //////                        }
+        //////                    }
+        //////                }
+        //////            }
+        //////            // new reading ORB destination type handler.
+        //////            // add optional thresholds to alertdestination table?
+        //////            // if ( destination.getIsactive() && destination.getType() == TypeCode.AMBIENT_ORB ) {
+        //////            // && thresholds populated
+        //////            //    send a message to the orb based on a high / med / low range
+        //////            // }
+        //////
+        //////        } catch ( Exception e ) {
+        //////            e.printStackTrace();
+        //////            if ( Logger.global.isLoggable( Logger.global.getLevel().SEVERE ) ) Logger.global.severe( e.toString() );
+        //////            throw new ModuleInboundException( e );
+        //////        }
+        //////    }
+        
+        
+        
+        
+        
+        //   private void sendAlertToDestinations( User user, String subject, String body ) throws Exception {
+        //        List alertDestinations = user.getAlertdestinations();
+        //        List alertSchedules    = user.getAlertschedules();
+        //        if ( alertDestinations.size() > 0 && alertSchedules.size() > 0  ) {
+        //            Calendar nowUserTimeZone = Calendar.getInstance( TimeZone.getTimeZone( user.getTimezone() ) );
+        //            int nowUserTimeZoneDayOfWeek = nowUserTimeZone.get( nowUserTimeZone.DAY_OF_WEEK );
+        //            int nowUserTimeZoneHourOfDay = nowUserTimeZone.get( nowUserTimeZone.HOUR_OF_DAY );
+        //            Iterator schedules = alertSchedules.iterator();
+        //            while( schedules.hasNext()) {
+        //                // User level schedule, may be expanded to destination level in the future (override at destination level?)
+        //                Alertschedule schedule = (Alertschedule)schedules.next();
+        //                if ( nowUserTimeZoneDayOfWeek == schedule.getDayofweek()
+        //                &&  nowUserTimeZoneHourOfDay >= schedule.getStarthour()
+        //                &&  nowUserTimeZoneHourOfDay < schedule.getEndhour()
+        //                ) {
+        //                    if ( Logger.global.isLoggable( Logger.global.getLevel().INFO ) ) Logger.global.info( "Sending alert [nowUserTimeZoneDayOfWeek=" + nowUserTimeZoneDayOfWeek + ",nowUserTimeZoneHourOfDay=" + nowUserTimeZoneHourOfDay + ",user=" + user + ",subject=" + subject.toString() + ",body=" + body.toString() + "]" );
+        //                    Iterator destinations = alertDestinations.iterator();
+        //                    while( destinations.hasNext() ) {
+        //                        Alertdestination destination = (Alertdestination)destinations.next();
+        //                        if ( destination.getIsactive() && destination.getType() == TypeCode.EMAIL_ADDRESS ) {
+        //                            if ( Logger.global.isLoggable( Logger.global.getLevel().INFO ) ) Logger.global.info( "Sending to " + destination.getDestination() );
+        //                            SendMail.send( destination.getDestination(), "GlucoMON@diabetech.net", "localhost",  subject, body );
+        //                            if ( Logger.global.isLoggable( Logger.global.getLevel().INFO ) ) Logger.global.info( "Sent" );
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+    }
+    

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-jasper-reports" default="default" basedir="." xmlns:ejbjarproject="http://www.netbeans.org/ns/j2ee-ejbjarproject/3">
+    <description>Builds compiled jasper reports files from jxrml in the source tree and copies compiled jasper files back to source tree.</description>
+
+    <target name="default">
+
+        <taskdef name="jrc"
+		classname="net.sf.jasperreports.ant.JRAntCompileTask">
+            <classpath>
+                <fileset dir=".">
+                    <include name="*.jar"/>
+                </fileset>
+                <pathelement path="../tmp/classes"/>
+            </classpath>
+        </taskdef>
+
+        <mkdir dir="/tmp/report"/>
+
+        <delete dir="./report"/>
+        <mkdir dir="./report"/>
+
+        <jrc
+            destdir="./report"
+            tempdir="/tmp/report"
+            keepjava="true" xmlvalidation="true"
+            srcdir="../app/core/report"
+            >
+            <src>
+                <fileset dir=".">
+                    <include name="**/*.jrxml"/>
+                </fileset>
+            </src>
+            <classpath>
+                <fileset dir=".">
+                    <include name="*.jar"/>
+                </fileset>
+                <pathelement path="../tmp/classes"/>
+            </classpath>
+            <include name="**/*.jrxml"/>
+        </jrc>
+
+		<copy todir="../app/core/report/"
+			overwrite="true"
+			force="true">
+            <fileset dir="./report">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
+
+
+    </target>
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,139 @@
+delimiter //
+DROP PROCEDURE IF EXISTS userFeatureProfile_rightnow_realTimeAlert;
+//
+CREATE PROCEDURE userFeatureProfile_rightnow_realTimeAlert()
+BEGIN
+  DECLARE done INT DEFAULT 0;
+  DECLARE userId int;
+-- imp id
+  DECLARE cur1 CURSOR FOR SELECT users_id FROM  intensiveManagementProtocol_user where intensiveManagementProtocols_id = 1;
+  DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET done = 1;
+
+  OPEN cur1;
+  REPEAT
+    FETCH cur1 INTO userId;
+    IF NOT done THEN
+            insert into userFeatureProfile values
+-- feature profile id
+            (null,1,null,null,0,now(),now(),'elink',1,userId,null);
+-- userprofile table
+            insert into userRealTimeAlertProfile values (LAST_INSERT_ID());
+    END IF;
+  UNTIL done END REPEAT;
+
+  CLOSE cur1;
+
+-- done w/ proc later so no dupe destinations
+--  insert into  userFeatureProfileDestinationProfile 
+--  select * from 
+--  (
+--    select null as 'a',1,null as 'b',now() as 'x',now() as 'y','elink',ufp.id as 'xxx',d.id as 'yyy'  ,null as 'c',null as 'd'
+--    from userFeatureProfile ufp 
+--    join destination d on d.userId = ufp.userId
+---- user profile table
+--    where ufp.id in (select id from userRealTimeAlertProfile where ufp.userId in (
+---- imp id
+--           SELECT users_id FROM  intensiveManagementProtocol_user where intensiveManagementProtocols_id = 1)
+--    )
+--  ) as z;
+END;
+//
+
+DROP PROCEDURE IF EXISTS userFeatureProfile_rightnow_dayOverDayReport;
+//
+CREATE PROCEDURE userFeatureProfile_rightnow_dayOverDayReport()
+BEGIN
+  DECLARE done INT DEFAULT 0;
+  DECLARE userId int;
+-- imp id
+  DECLARE cur1 CURSOR FOR SELECT users_id FROM  intensiveManagementProtocol_user where intensiveManagementProtocols_id = 1;
+  DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET done = 1;
+
+  OPEN cur1;
+  REPEAT
+    FETCH cur1 INTO userId;
+    IF NOT done THEN
+            insert into userFeatureProfile values
+-- feature profile id
+            (null,1,null,null,0,now(),now(),'elink',5,userId,null);
+-- userprofile table
+            insert into userDayOverDayReportProfile values (LAST_INSERT_ID());
+    END IF;
+  UNTIL done END REPEAT;
+
+  CLOSE cur1;
+
+END;
+//
+
+DROP PROCEDURE IF EXISTS userFeatureProfile_tch_dayOverDayReport;
+//
+CREATE PROCEDURE userFeatureProfile_tch_dayOverDayReport()
+BEGIN
+  DECLARE done INT DEFAULT 0;
+  DECLARE userId int;
+-- imp id
+  DECLARE cur1 CURSOR FOR SELECT users_id FROM  intensiveManagementProtocol_user where intensiveManagementProtocols_id = 2;
+  DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET done = 1;
+
+  OPEN cur1;
+  REPEAT
+    FETCH cur1 INTO userId;
+    IF NOT done THEN
+            insert into userFeatureProfile values
+-- feature profile id
+            (null,1,null,null,0,now(),now(),'elink',6,userId,null);
+-- userprofile table
+            insert into userDayOverDayReportProfile values (LAST_INSERT_ID());
+    END IF;
+  UNTIL done END REPEAT;
+
+  CLOSE cur1;
+
+END;
+//
+
+DROP PROCEDURE IF EXISTS userFeatureProfile_adm_type1_dayOverDayReport;
+//
+CREATE PROCEDURE userFeatureProfile_adm_type1_dayOverDayReport()
+BEGIN
+  DECLARE done INT DEFAULT 0;
+  DECLARE userId int;
+-- imp id
+  DECLARE cur1 CURSOR FOR SELECT users_id FROM  intensiveManagementProtocol_user where intensiveManagementProtocols_id = 3;
+  DECLARE CONTINUE HANDLER FOR SQLSTATE '02000' SET done = 1;
+
+  OPEN cur1;
+  REPEAT
+    FETCH cur1 INTO userId;
+    IF NOT done THEN
+            insert into userFeatureProfile values
+-- feature profile id
+            (null,1,null,null,0,now(),now(),'elink',7,userId,null);
+-- userprofile table
+            insert into userDayOverDayReportProfile values (LAST_INSERT_ID());
+    END IF;
+  UNTIL done END REPEAT;
+
+  CLOSE cur1;
+
+END;
+//
+
+--call each sp
+call userFeatureProfile_rightnow_realTimeAlert()
+//
+call userFeatureProfile_rightnow_dayOverDayReport() 
+//
+call userFeatureProfile_tch_dayOverDayReport() 
+//
+call userFeatureProfile_adm_type1_dayOverDayReport() 
+//
+select 'done';
+//
+
+
+
+delimiter ;
+
+
